@@ -1,0 +1,25 @@
+image: voxxit/grunt
+git:
+  path: github.com/vjscjp/abc12
+script:
+  - echo "build commands"
+  - .shipped/build
+  - .shipped/test
+clone:
+  path: github.com/vjscjp/abc12
+build:
+  image: voxxit/grunt
+  commands:
+    - echo "build commands"
+    - .shipped/build
+    - .shipped/test
+publish:
+  docker:
+    file: ./Dockerfile
+    username: $$docker_user
+    password: $$docker_key
+    registry: $$docker_registry
+    repo: $$docker_repo
+    email: $$docker_user_email
+    tag: $$COMMIT
+    
